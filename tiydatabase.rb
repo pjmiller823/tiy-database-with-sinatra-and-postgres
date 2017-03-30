@@ -6,7 +6,18 @@ get '/' do
   erb :home
 end
 
-# Disign webpage with: HOME PAGE, Nav bar showing EMPLOYEES (clickable),
+get '/employees' do
+  erb :employees
+end
+
+get '/show' do
+  erb :employees_show
+end
+
+get '/new' do
+  erb :employees_new
+end
+
 # employees links to NEW EMPLOYEE page and SEARCH
 # nice format for stuff
 # Show page must be editable
