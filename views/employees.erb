@@ -45,31 +45,31 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-    <div class="panel panel-primary">
-      <div class="panel-heading"><i class="fa fa-check-square-o" aria-hidden="true"></i>Games</div>
+    <div class="panel panel-success">
+      <div class="panel-heading">Employees. Click the name to view the individual file.</div>
       <table class="table">
+        <% @employees.each do |employee| %>
         <th>#</th>
-        <th>Home Team</th>
-        <th>Away Team</th>
-        <th>Score</th>
-        <tr class="alert-success">
-          <td>1</td>
-          <td>Tampa Dart Dynamos</td>
-          <td>Buffalo BullsEyes</td>
-          <td>20-17</td>
-        </tr>
+        <th>name</th>
+        <th>phone</th>
+        <th>address</th>
         <tr>
-          <td>2</td>
-          <td>St. Pete Ping Pong Power House</td>
-          <td>Philly Paddlers</td>
-          <td>18-12</td>
+          <td></a> <%= employee ["id"] %></td>
+          <td><a href="/employee?name=<%= employee['name'] %>"><%= employee ["name"] %></td>
+          <td><%= employee ["phone"] %></td>
+          <td><%= employee ["address"] %></td>
         </tr>
+        <th>position</th>
+        <th>salary</th>
+        <th>github account</th>
+        <th>slack account</th>
         <tr>
-          <td>3</td>
-          <td>Orlando Golf Gang</td>
-          <td>Portland Putters</td>
-          <td>2-1</td>
+          <td><%= employee ["position"] %></td>
+          <td><%= employee ["salary"] %></td>
+          <td><%= employee ["github"] %></td>
+          <td><%= employee ["slack"] %></td>
         </tr>
+        <% end %>
       </table>
     </div>
   </div>

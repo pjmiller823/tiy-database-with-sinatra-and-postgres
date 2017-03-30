@@ -7,6 +7,9 @@ get '/' do
 end
 
 get '/employees' do
+  database = PG.connect(dbname: "tiy-database")
+  @employees = database.exec ("select * from employees")
+
   erb :employees
 end
 
