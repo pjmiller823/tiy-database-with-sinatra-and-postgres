@@ -11,6 +11,6 @@ end
 # nice format for stuff
 # Show page must be editable
 
-# Make and populate database. (made, add some inputs to see in EMPLOYEES)
+# ***Make and populate database. (made, add some inputs to see in EMPLOYEES)
 # Create a home page and make it look nice
-# Make pages for home, employee index, employee show, employee new.
+# ***Make pages for home, employee index, employee show, employee new.
