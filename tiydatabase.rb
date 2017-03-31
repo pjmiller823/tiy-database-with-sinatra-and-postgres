@@ -31,7 +31,9 @@ get '/new' do
   github = params["github"]
   slack = params["slack"]
 
-  redirect('/')
+  # redirect('/')
+  database = PG.connect(dbname: "tiy-database")
+  database.exec("insert into employees (name, phone, address, position, salary, github, slack) values($1, $2, $3, $4, $5, $6, $7)", [name, phone, address, position, salary, github, slack])
 
   erb :employees_new
 end
