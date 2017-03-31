@@ -14,6 +14,9 @@ get '/employees' do
 end
 
 get '/show' do
+
+  @employee = params ["name"]
+
   erb :employees_show
 end
 
