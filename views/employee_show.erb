@@ -45,6 +45,38 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+    <div class="container">
+      <div class="panel panel-success">
+      <div class="panel-heading">Employees. Click the name to view the individual file.</div>
+        <table class="table table-striped"
+          <table class="table">
+          <% @employees.each do |employee| %>
+          <th>#</th>
+          <th>name</th>
+          <th>phone</th>
+          <th>address</th>
+          <tr>
+            <td></a> <%= employee ["id"] %></td>
+            <td><a href="/employee_show?name=<%= employee['name'] %>"><%= employee ["name"] %></td>
+            <td><%= employee ["phone"] %></td>
+            <td><%= employee ["address"] %></td>
+          </tr>
+          <th>position</th>
+          <th>salary</th>
+          <th>github account</th>
+          <th>slack account</th>
+          <tr>
+            <td><%= employee ["position"] %></td>
+            <td><%= employee ["salary"] %></td>
+            <td><%= employee ["github"] %></td>
+            <td><%= employee ["slack"] %></td>
+          </tr>
+          <% end %>
+        </table>
+      </table>
+    </div>
+    </div>
+  </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

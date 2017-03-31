@@ -13,11 +13,13 @@ get '/employees' do
   erb :employees
 end
 
-get '/show' do
+get '/employee_show' do
 
-  @employee = params ["name"]
+  name = params["name"]
+  database = PG.connect(dbname: "tiy-database")
+  @employees = database.exec("select * from employees where name =$1", [name])
 
-  erb :employees_show
+  erb :employee_show
 end
 
 get '/new' do
