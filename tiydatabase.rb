@@ -23,6 +23,16 @@ get '/employee_show' do
 end
 
 get '/new' do
+  name = params["name"]
+  phone = params["phone"]
+  address = params["address"]
+  position = params["position"]
+  salary = params["salary"]
+  github = params["github"]
+  slack = params["slack"]
+
+  redirect('/')
+
   erb :employees_new
 end
 
