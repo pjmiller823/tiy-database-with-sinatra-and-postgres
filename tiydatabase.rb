@@ -59,14 +59,7 @@ get '/edit' do
   github = params["github"]
   slack = params["slack"]
   database = PG.connect(dbname: "tiy-database")
-  @employees = database.exec("update employees set name =$1, phone =$2, address =$3, position =$4, salary =$5, github =$6, slack =$7 where id = id", [name, phone, address, position, salary, github, slack])
+  @employees = database.exec("update employees set name =$1, phone =$2, address =$3, position =$4, salary =$5, github =$6, slack =$7 where id =$8", [name, phone, address, position, salary, github, slack, id])
 
   erb :edit
 end
-# employees links to NEW EMPLOYEE page and SEARCH
-# nice format for stuff
-# Show page must be editable
-
-# ***Make and populate database. (made, add some inputs to see in EMPLOYEES)
-# Create a home page and make it look nice
-# ***Make pages for home, employee index, employee show, employee new.

@@ -47,7 +47,7 @@
     </nav>
     <div class="container">
       <div class="panel panel-success">
-      <div class="panel-heading">Employees. Click the name to view the individual file.</div>
+      <div class="panel-heading">Employees. Click the name to edit.</div>
         <table class="table table-striped"
           <table class="table">
           <% @employees.each do |employee| %>
@@ -57,7 +57,7 @@
           <th>address</th>
           <tr>
             <td></a> <%= employee ["id"] %></td>
-            <td><a href="/employee_show?name=<%= employee['name'] %>"><%= employee ["name"] %></td>
+            <td><a href="/edit?id=<%= employee['id'] %>"><%= employee ["name"] %></td>
             <td><%= employee ["phone"] %></td>
             <td><%= employee ["address"] %></td>
           </tr>
@@ -76,10 +76,10 @@
       </table>
     </div>
     </div>
-    <div class="well-lg text-center">
+    <!-- <div class="well-lg text-center">
       Wait, is this information not correct? Click here to edit this employee!
-      <a class="btn btn-success btn-lg" href="/edit" role="button">Edit!</a>
-    </div>
+      <a class="btn btn-success btn-lg" name="id" href="/edit?" role="button">Edit!</a>
+    </div> -->
   </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

@@ -45,7 +45,7 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-    <div class="container">
+    <!-- <div class="container">
       <div class="panel panel-success">
       <div class="panel-heading">Please completely update the information of the employee.</div>
         <table class="table table-striped"
@@ -75,41 +75,42 @@
         </table>
       </table>
     </div>
-    </div>
+    </div> -->
     <div class="container">
-      <form action="/employees_new" method="get" class="form-horizontal">
+      <% @employees.each do |employee|%>"
+      <form action="/edit" method="get" class="form-horizontal">
         <div class="form-group">
           <label for="exampleInputEmail1">Name</label>
-          <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Name">
+          <input type="text" name="name" value="<%employee[name]%>" class="form-control">
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Phone Number</label>
-          <input type="text" name="phone" class="form-control" id="exampleInputEmail1" placeholder="Phone">
+          <input type="text" name="phone" value="<%employee[phone]%>" class="form-control">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Address</label>
-          <input type="text" name="address" class="form-control" id="exampleInputPassword1" placeholder="Address">
+          <input type="text" name="address" value="<%employee[address]%>" class="form-control">
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Position</label>
-          <input type="text" name="position" class="form-control" id="exampleInputEmail1" placeholder="Position">
+          <input type="text" name="position" value="<%employee[position]%>" class="form-control">
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Salary</label>
-          <input type="text" name="salary" class="form-control" id="exampleInputEmail1" placeholder="Salary">
+          <input type="text" name="salary" value="<%employee[salary]%>" class="form-control">
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Github Account Name</label>
-          <input type="text" name="github" class="form-control" id="exampleInputEmail1" placeholder="Github Account">
+          <input type="text" name="github" value="<%employee[github]%>" class="form-control">
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Slack Account Name</label>
-          <input type="text" name="slack" class="form-control" id="exampleInputEmail1" placeholder="Slack Account">
+          <input type="text" name="slack" value="<%employee[slack]%>" class="form-control" xampleInputEmail1">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
         </form>
-      </div>
-  </div>
+      <%end%>
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
