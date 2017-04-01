@@ -15,9 +15,11 @@ end
 
 get '/employee_show' do
 
-  name = params["name"]
+  id = params["id"]
   database = PG.connect(dbname: "tiy-database")
-  @employees = database.exec("select * from employees where name =$1", [name])
+  employees = database.exec("select * from employees where id =$1", [id])
+
+  @employee = employees.first
 
   erb :employee_show
 end
@@ -39,6 +41,7 @@ get '/employees_new' do
 
   redirect('/')
 end
+
 get '/searched' do
   name = params["search"]
   github = params["search"]
@@ -51,6 +54,18 @@ end
 
 get '/edit' do
   id = params["id"]
+  database = PG.connect(dbname: "tiy-database")
+  employees = database.exec("select * from employees where id =$1", [id])
+
+  @employee = employees.first
+
+  erb :edit
+
+end
+
+get '/update' do
+
+  id = params["id"]
   name = params["name"]
   phone = params["phone"]
   address = params["address"]
@@ -59,7 +74,9 @@ get '/edit' do
   github = params["github"]
   slack = params["slack"]
   database = PG.connect(dbname: "tiy-database")
-  @employees = database.exec("update employees set name =$1, phone =$2, address =$3, position =$4, salary =$5, github =$6, slack =$7 where id =$8", [name, phone, address, position, salary, github, slack, id])
+  database.exec("UPDATE employees SET name = $1, phone = $2, address = $3, position = $4, salary = $5, github = $6, slack =$7 WHERE id = $8;", [name, phone, address, position, salary, github, slack, id])
 
-  erb :edit
+  employees = database.exec("select * from employees where id =$1", [id])
+  @employee = employees.first
+  erb :employee_show
 end
