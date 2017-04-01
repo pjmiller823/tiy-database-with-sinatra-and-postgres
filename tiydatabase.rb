@@ -80,3 +80,11 @@ get '/update' do
   @employee = employees.first
   erb :employee_show
 end
+
+get '/delete' do
+  id = params["id"]
+  database = PG.connect(dbname: "tiy-database")
+  database.exec("DELETE FROM  employees where id = $1", [id])
+
+  redirect('/employees')
+end
