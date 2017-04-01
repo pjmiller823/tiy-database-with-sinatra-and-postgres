@@ -48,6 +48,21 @@ get '/searched' do
 
   erb :searched
 end
+
+get '/edit' do
+  id = params["id"]
+  name = params["name"]
+  phone = params["phone"]
+  address = params["address"]
+  position = params["position"]
+  salary = params["salary"]
+  github = params["github"]
+  slack = params["slack"]
+  database = PG.connect(dbname: "tiy-database")
+  @employees = database.exec("update employees set name =$1, phone =$2, address =$3, position =$4, salary =$5, github =$6, slack =$7 where id = id", [name, phone, address, position, salary, github, slack])
+
+  erb :edit
+end
 # employees links to NEW EMPLOYEE page and SEARCH
 # nice format for stuff
 # Show page must be editable
