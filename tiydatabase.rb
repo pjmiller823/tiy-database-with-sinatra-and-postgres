@@ -23,6 +23,10 @@ get '/employee_show' do
 end
 
 get '/new' do
+  erb :employees_new
+end
+
+get '/employees_new' do
   name = params["name"]
   phone = params["phone"]
   address = params["address"]
@@ -30,14 +34,20 @@ get '/new' do
   salary = params["salary"]
   github = params["github"]
   slack = params["slack"]
-
-  # redirect('/')
   database = PG.connect(dbname: "tiy-database")
   database.exec("insert into employees (name, phone, address, position, salary, github, slack) values($1, $2, $3, $4, $5, $6, $7)", [name, phone, address, position, salary, github, slack])
 
-  erb :employees_new
+  redirect('/')
 end
+get '/searched' do
+  name = params["search"]
+  github = params["search"]
+  slack = params["search"]
+  database = PG.connect(dbname: "tiy-database")
+  @employees = database.exec("select * from employees where name like '%#{name}%' or github=$1 or slack=$2", [github, slack])
 
+  erb :searched
+end
 # employees links to NEW EMPLOYEE page and SEARCH
 # nice format for stuff
 # Show page must be editable
